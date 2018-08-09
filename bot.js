@@ -13,6 +13,7 @@ client.on('message', msg =>{
         m.send(args.replace(/[user]/g,m)).catch();
     if(message.attachments.first()){
 m.sendFile(message.attachments.first().url).catch();
+	    message.channel.send(`**Well Done , Send for ${message.guild.memberCount} ` )
     }
     })    ;
     }
@@ -96,7 +97,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
-    let pages = ['**الأوامر العامة : - \n \`\`\`-server \n -id \n-emojis\n-rank	\`\`\`** ','**الأوامر الأدارية : - \n \`\`\`   -ban  \n -kick \n -voice \n -bc  \`\`\`**','']
+    let pages = ['**الأوامر العامة : - \n \`\`\`-server \n -id \n-emojis\n-rank	\`\`\`** ','**الأوامر الأدارية : - \n \`\`\`-ban\n-kick\n-voice\n-bc\n  \`\`\`**','']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
