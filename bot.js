@@ -100,7 +100,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
-    let pages = ['**\`\`\` General Commands :-\n-server\n-id\n-emojis\n-rank\n \`\`\`** ','  \`\`\`Admin Commands :-\n-kick\n-ban\n-voice\n-bc \`\`\`**','']
+    let pages = ['**\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬\n-server\n-id\n-emojis\n-rank\n \`\`\`** ','**  \`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬\n-kick\n-ban\n-voice\n-bc \`\`\`**','']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
