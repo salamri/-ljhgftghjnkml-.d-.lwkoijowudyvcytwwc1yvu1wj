@@ -31,7 +31,6 @@ client.on('message', function(msg) {
       .addField('**Members :**',`** __${msg.guild.memberCount}__ **`,true)
       .addField('**Text Channels :**',`** __${msg.guild.channels.filter(m => m.type === 'text').size}__** `,true)
       .addField('**Voice Channels :**',`** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **`,true)
-      .setFooter('createdAt :',msg.guild.createdAt.toLocaleString())
       msg.channel.send({embed:embed});
     }
   });
@@ -97,7 +96,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
-    let pages = ['**الأوامر العامة : - \n \`\`\`-id \n-emojis\n-rank	\`\`\`** ','**الأوامر الأدارية : - \n \`\`\` -server \n -ban \n \n -kick \n -voice \n -bc  \`\`\`**','']
+    let pages = ['**الأوامر العامة : - \n \`\`\`-server \n -id \n-emojis\n-rank	\`\`\`** ','**الأوامر الأدارية : - \n \`\`\`   -ban  \n -kick \n -voice \n -bc  \`\`\`**','']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
