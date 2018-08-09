@@ -8,12 +8,11 @@ client.on('ready', () => {
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
-    let pages = ['**الأوامر العامة : - \n \`\`\`-id \n-emojis\n-rank	\`\`\`** ','**الأوامر الأدارية : - \n \`\`\` -voiceset \n -giveaway \n	\`\`\`**','']
+    let pages = ['**الأوامر العامة : - \n \`\`\`-id \n-emojis\n-rank	\`\`\`** ','**الأوامر الأدارية : - \n \`\`\` -voiceset \`\`\`**','']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
-    .setFooter(`Page ${page} of ${pages.length}`)
     .setThumbnail('https://cdn.discordapp.com/attachments/477011368403271680/477011788987367435/monogram-l-logo-letter-overlapping-thin-line-vector-5868172.jpg')
     .setDescription(pages[page-1])
 
@@ -50,6 +49,7 @@ if (message.content.startsWith(prefix + 'help')) {
     })
     }
 });
+
 
 client.on('message', message => { 
     if (message.content.startsWith(prefix + 'emojis')) {
