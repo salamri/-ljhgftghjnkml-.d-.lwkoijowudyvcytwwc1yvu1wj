@@ -20,7 +20,25 @@ m.sendFile(message.attachments.first().url).catch();
     }
 });
 
-
+var version = '11.0.0';
+client.on('message', message => {
+if (message.content === prefix+'stats'){
+     if(!message.channel.guild) return message.reply('** - فقط للسيرفرات .**');
+var embed = new Discord.RichEmbed()
+    .setAuthor(client.user.username, client.user.avatarURL)
+.setDescription(`**Ping : ${Date.now() - message.createdTimestamp}
+ Servers  :${client.guilds.size}
+  Users : ${client.users.size}
+ Channels :: ${client.channels.size}
+ RAM Usage : ${(process.memoryUsage().rss / 1048576).toFixed()}MB
+ Discord.js:  : v${version}
+ UpTime   : ${timeCon(process.uptime())}
+ Node  : ${process.version}**`)
+     .setFooter('all copyrights reserved ©',client.user.avatarURL)
+ .setFooter(`LeBot.`, client.user.avatarURL)
+    message.channel.sendEmbed(embed)
+}
+});
 
 client.on('message', async message => {
   let args = message.content.split(" ");
@@ -294,7 +312,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
-    let pages = ['**\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬\n-server\n-id\n-emojis\n-rank\n \`\`\`** ','**  \`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬\n-kick\n-ban\n-voice\n-bc\n-clear\n-mute\n-unmute \`\`\`**','']
+    let pages = ['**\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬\n-server\n-id\n-emojis\n-rank\n-stats \`\`\`** ','**  \`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬\n-kick\n-ban\n-voice\n-bc\n-clear\n-mute\n-unmute \`\`\`**','']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
