@@ -316,7 +316,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
-    let pages = ['**\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬\n-server\n-id\n-emojis\n-rank\n-stats\n-avatar \`\`\`** ','**  \`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬\n-kick\n-ban\n-voice\n-bc\n-clear\n-mute\n-unmute \`\`\`**','']
+    let pages = ['**\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬\n-server\n-id\n-emojis\n-rank\n-stats\n-avatar \`\`\`** ','**  \`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬\n-kick\n-ban\n-voice\n-bc\n-clear\n-mute\n-unmute \`\`\`**','**- By :  ّّEpicEdiTeDّ , $ - ? , L .#4510 \n Bot Link : https://discordapp.com/oauth2/authorize?client_id=477008338048253983&permissions=8&scope=bot \n Suppoert Server : https://discord.gg/3ZMPzHD . ']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
