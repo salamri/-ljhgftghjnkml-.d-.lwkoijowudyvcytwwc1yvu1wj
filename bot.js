@@ -25,14 +25,12 @@ client.on('message', message => {
 if (message.content === prefix+'stats'){
      if(!message.channel.guild) return message.reply('** - فقط للسيرفرات .**');
 var embed = new Discord.RichEmbed()
-    .setAuthor(client.user.username, client.user.avatarURL)
 .setDescription(`**Ping : ${Date.now() - message.createdTimestamp}
- Servers  :${client.guilds.size}
+ Servers  : ${client.guilds.size}
   Users : ${client.users.size}
- Channels :: ${client.channels.size}
- Discord.js:  : v${version}
+ Channels : ${client.channels.size}
+ Discord.js : v${version}
 **`)
-     .setFooter('all copyrights reserved ©',client.user.avatarURL)
  .setFooter(`LeBot.`, client.user.avatarURL)
     message.channel.sendEmbed(embed)
 }
