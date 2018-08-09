@@ -30,10 +30,8 @@ var embed = new Discord.RichEmbed()
  Servers  :${client.guilds.size}
   Users : ${client.users.size}
  Channels :: ${client.channels.size}
- RAM Usage : ${(process.memoryUsage().rss / 1048576).toFixed()}MB
  Discord.js:  : v${version}
- UpTime   : ${timeCon(process.uptime())}
- Node  : ${process.version}**`)
+**`)
      .setFooter('all copyrights reserved ©',client.user.avatarURL)
  .setFooter(`LeBot.`, client.user.avatarURL)
     message.channel.sendEmbed(embed)
