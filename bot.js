@@ -23,7 +23,7 @@ m.sendFile(message.attachments.first().url).catch();
 
 client.on('message', message => {
   if(message.content.startsWith(prefix + "ping")) {
-message.channel.send(`\`MessageTaken\`: ${Date.now() - message.createdTimestamp}ms\n \`DiscordAPi\`: ${Math.round(client.ping)}ms\n\`Average:\` ${Math.round(client.pings[0])}ms. `)
+message.channel.send(`MessageTaken: \`${Date.now() - message.createdTimestamp}\`ms\n DiscordAPi: \`${Math.round(client.ping)}\`ms\nAverage: \`${Math.round(client.pings[0])}\`ms. `)
 }
 });
 
