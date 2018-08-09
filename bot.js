@@ -8,7 +8,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
-    let pages = ['**الأوامر العامة : - \n \`\`\`-id \n-emojis\n-rank	\`\`\`** ','**الأوامر الأدارية : - \n \`\`\` -voiceset \`\`\`**','']
+    let pages = ['**الأوامر العامة : - \n \`\`\`-id \n-emojis\n-rank	\`\`\`** ','**الأوامر الأدارية : - \n \`\`\` -voice \`\`\`**','']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
@@ -35,21 +35,18 @@ if (message.content.startsWith(prefix + 'help')) {
             if (page === 1) return;
             page--;
             embed.setDescription(pages[page-1]);
-            embed.setFooter(`Page ${page} of ${pages.length}`);
             msg.edit(embed)
         })
         forwards.on('collect', r => {
             if (page === pages.length) return;
             page++;
             embed.setDescription(pages[page-1]);
-            embed.setFooter(`Page ${page} of ${pages.length}`);
             msg.edit(embed)
         })
         })
     })
     }
 });
-
 
 client.on('message', message => { 
     if (message.content.startsWith(prefix + 'emojis')) {
@@ -68,7 +65,7 @@ client.on('message', message => {
 
 
 client.on('message', async message => {
-  if(message.content.startsWith(prefix + "voiceset")) {
+  if(message.content.startsWith(prefix + "voice")) {
   if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply(':x: **ليس لديك الصلاحيات الكافية**');
   if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply(':x: **ليس معي الصلاحيات الكافية**');
   var args = message.content.split(' ').slice(1).join(' ');
