@@ -23,7 +23,6 @@ m.sendFile(message.attachments.first().url).catch();
 
 client.on('message', message => {
   if(message.content.startsWith(prefix + "ping")) {
-message.channel.send(`**Pinging .. :hourglass:  **`)
 message.edit(`**Pong ! , ${Date.now() - message.createdTimestamp} ms :stopwatch: **`)
 }
 });
