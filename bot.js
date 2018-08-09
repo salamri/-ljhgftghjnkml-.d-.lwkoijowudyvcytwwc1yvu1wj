@@ -27,10 +27,6 @@ return;
             m.send(`${m}`,{embed: bc})
     if(message.attachments.first()){
 m.sendFile(message.attachments.first().url).catch();
-        });
-    }
-    } else {
-        return;
     }
 });
 
