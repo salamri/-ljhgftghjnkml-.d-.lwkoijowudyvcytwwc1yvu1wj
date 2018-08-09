@@ -5,18 +5,32 @@ client.on('ready', () => {
     console.log('I am ready!');
 });
 
-client.on('message', msg =>{
-    let message=msg;
-    if(message.content.startsWith("-bc")){
-	       message.channel.send(`**Well Done , Send for ${message.guild.memberCount} **` )
-        var args = message.content.split(' ').slice(1).join(' ');
-    msg.guild.members.forEach(m=>{
-        m.send(args.replace(/[user]/g,m)).catch();
+client.on('message', message => {
+var prefix = "-";
+
+    if (message.author.id === client.user.id) return;
+    if (message.guild) {
+   let embed = new Discord.RichEmbed()
+    let args = message.content.split(' ').slice(1).join(' ');
+if(message.content.split(' ')[0] == prefix + 'bc') {
+    if (!args[1]) {
+message.channel.send("** -أستعمل : -bc [الرسالة]");
+return;
+}
+        message.guild.members.forEach(m => {
+   if(!message.member.hasPermission('ADMINISTRATOR')) return;
+            var bc = new Discord.RichEmbed()
+            .addField('» السيرفر :', `${message.guild.name}`)
+            .addField('» المرسل : ', `<@${message.author.id}>`)
+            .addField(' » الرسالة : ', args)
+            .setColor('#ff0000')
+            m.send(`${m}`,{embed: bc})
     if(message.attachments.first()){
 m.sendFile(message.attachments.first().url).catch();
-	 
+        });
     }
-    })    ;
+    } else {
+        return;
     }
 });
 
@@ -322,7 +336,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
-    let pages = ['**\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬\n-server\n-id\n-emojis\n-rank\n-stats\n-avatar \`\`\`** ','**  \`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬\n-kick\n-ban\n-voice\n-bc\n-clear\n-mute\n-unmute \`\`\`**','**- By :  ّّEpicEdiTeDّ , $ - ? , L .#4510 \n Bot Link : https://discordapp.com/oauth2/authorize?client_id=477008338048253983&permissions=8&scope=bot \n Suppoert Server : https://discord.gg/3ZMPzHD . ']
+    let pages = ['**\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬\n-server\n-id\n-emojis\n-rank\n-stats\n-avatar\n-ping \`\`\`** ','**  \`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬\n-kick\n-ban\n-voice\n-bc\n-clear\n-mute\n-unmute \`\`\`**','**- By :  ّّEpicEdiTeDّ , $ - ? , L .#4510 \n Bot Link : https://discordapp.com/oauth2/authorize?client_id=477008338048253983&permissions=8&scope=bot \n Suppoert Server : https://discord.gg/3ZMPzHD . ']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
