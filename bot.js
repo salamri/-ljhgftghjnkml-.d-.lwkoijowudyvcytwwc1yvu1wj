@@ -20,6 +20,14 @@ m.sendFile(message.attachments.first().url).catch();
     }
 });
 
+
+ client.on('message', message => {
+        var  user = message.mentions.users.first() || message.author;
+    if (message.content.startsWith("-avatar")) {
+message.channel.send(`This avatar For ${user} link : ${user.avatarURL}`);
+}
+});
+
 var version = '11.0.0';
 client.on('message', message => {
 if (message.content === prefix+'stats'){
@@ -308,7 +316,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
-    let pages = ['**\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬\n-server\n-id\n-emojis\n-rank\n-stats \`\`\`** ','**  \`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬\n-kick\n-ban\n-voice\n-bc\n-clear\n-mute\n-unmute \`\`\`**','']
+    let pages = ['**\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬\n-server\n-id\n-emojis\n-rank\n-stats\n-avatar \`\`\`** ','**  \`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬\n-kick\n-ban\n-voice\n-bc\n-clear\n-mute\n-unmute \`\`\`**','']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
