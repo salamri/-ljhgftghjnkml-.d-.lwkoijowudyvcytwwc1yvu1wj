@@ -21,6 +21,13 @@ m.sendFile(message.attachments.first().url).catch();
 });
 
 
+client.on('message', message => {
+  if(message.content.startsWith(prefix + "ping")) {
+message.channel.send(`**Pinging .. :hourglass:  **`)
+message.edit(`**Pong ! , ${Date.now() - message.createdTimestamp} ms :stopwatch: **`)
+}
+});
+
  client.on('message', message => {
         var  user = message.mentions.users.first() || message.author;
     if (message.content.startsWith("-avatar")) {
