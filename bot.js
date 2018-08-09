@@ -14,6 +14,7 @@ if (message.content.startsWith(prefix + 'help')) {
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setFooter(`Page ${page} of ${pages.length}`)
+    .setThumbnail('https://cdn.discordapp.com/attachments/477011368403271680/477011788987367435/monogram-l-logo-letter-overlapping-thin-line-vector-5868172.jpg')
     .setDescription(pages[page-1])
 
     message.channel.sendEmbed(embed).then(msg => {
