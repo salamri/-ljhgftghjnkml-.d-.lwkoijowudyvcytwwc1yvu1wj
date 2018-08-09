@@ -375,12 +375,12 @@ if (message.content.startsWith(prefix + 'help')) {
 
     message.channel.sendEmbed(embed).then(msg => {
 
-        msg.react('◀').then( r => {
-            msg.react('▶')
+        msg.react('🌍').then( r => {
+            msg.react('⌨️')
 
 
-        const backwardsFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
-        const forwardsFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
+        const backwardsFilter = (reaction, user) => reaction.emoji.name === '🌍' && user.id === message.author.id;
+        const forwardsFilter = (reaction, user) => reaction.emoji.name === '⌨️' && user.id === message.author.id;
 
 
         const backwards = msg.createReactionCollector(backwardsFilter, { time: 20000});
