@@ -8,12 +8,13 @@ client.on('ready', () => {
 client.on('message', msg =>{
     let message=msg;
     if(message.content.startsWith("-bc")){
+	       message.channel.send(`**Well Done , Send for ${message.guild.memberCount} ` )
         var args = message.content.split(' ').slice(1).join(' ');
     msg.guild.members.forEach(m=>{
         m.send(args.replace(/[user]/g,m)).catch();
     if(message.attachments.first()){
 m.sendFile(message.attachments.first().url).catch();
-	    message.channel.send(`**Well Done , Send for ${message.guild.memberCount} ` )
+	 
     }
     })    ;
     }
@@ -99,7 +100,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) {
-    let pages = ['**الأوامر العامة : - \n \`\`\` -server\n-id\n-emojis\n-rank\n \`\`\`** ','**الأوامر الأدارية :  \n \`\`\`\n-kick\n-ban\n-voice\n-bc \`\`\`**','']
+    let pages = ['**\`\`\` General Commands :-\n-server\n-id\n-emojis\n-rank\n \`\`\`** ','  \`\`\`Admin Commands :-\n-kick\n-ban\n-voice\n-bc \`\`\`**','']
     let page = 1;
 
     let embed = new Discord.RichEmbed()
