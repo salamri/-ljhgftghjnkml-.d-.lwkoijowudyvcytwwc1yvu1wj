@@ -266,7 +266,7 @@ client.on('message', async message => {
  
 
 client.on('message', message => {
-if (message.content.startsWith('*server')) {
+if (message.content.startsWith('-server')) {
  message.channel.send(`Here is the different information of **${message.guild.name}**`, {
         embed: {
             color: 0xDF9C9D,
@@ -359,35 +359,37 @@ const giphy = require('giphy-api')();
       }
 });
 
-client.on('message', message => {
-if (message.content.startsWith('-invites')) {
-let oi = message.mentions.users.first() ? message.mentions.users.first().id : message.author.id ; 
-  let img = message.mentions.users.first() ? message.mentions.users.first().username : message.author.username;
-  let imagemm = message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL
-  message.guild.fetchInvites().then(invs => {
-    let member = client.guilds.get(message.guild.id).members.get(oi);
-    let personalInvites = invs.filter(i => i.inviter.id === oi);
-    let urll = invs.filter(i => i.inviter.id === oi);
-    let link = urll.reduce((p , v) => v.url +` , Total de membros recrutados no convite: ${v.uses}.\n`+ p, `\nServidor: ${message.guild.name} \n `);
-    let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
-   let exec = personalInvites.reduce((p, v) => v.inviter);
- let possibleInvites = [['Total de membros recrutados:']];
-possibleInvites.push([inviteCount, exec]);
-        let user = message.mentions.users.first() || message.author;
-        let mem = message.guild.member(user);
-        let millisJoined = new Date().getTime() - mem.joinedAt.getTime();
-        let daysJoined = millisJoined / 1000 / 60 / 60 / 24;
-const alpha = new Discord.RichEmbed()
-.setAuthor(img)
-.addField(`${message.author.name}`,` ّ\n\n► لقد قمت بدعوة   \`\`${Number(inviteCount)}\`\` عضو \n\n ► لقد انضممت لللسيرفر مند \`${daysJoined.toFixed(0)}\`يوم .\n\n► لقد انضممت للسيرفر من خلال هذا الرابط \`${exec}\``,true)
-.setThumbnail(imagemm)
-.setColor(0x4959e9);
-message.channel.send(alpha);
+  client.on('message', message => {
+    if (message.content.startsWith('-invites')) {
+    let oi = message.mentions.users.first() ? message.mentions.users.first().id : message.author.id ;
+      let img = message.mentions.users.first() ? message.mentions.users.first().username : message.author.username;
+      let imagemm = message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL
+      message.guild.fetchInvites().then(invs => {
+        let member = client.guilds.get(message.guild.id).members.get(oi);
+        let personalInvites = invs.filter(i => i.inviter.id === oi);
+        let urll = invs.filter(i => i.inviter.id === oi);
+        let link = urll.reduce((p , v) => v.url +` , Total de membros recrutados no convite: ${v.uses}.\n`+ p, `\nServidor: ${message.guild.name} \n `);
+        let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+       let exec = personalInvites.reduce((p, v) => v.inviter);
+     let possibleInvites = [['Total de membros recrutados:']];
+    possibleInvites.push([inviteCount, exec]);
+            let user = message.mentions.users.first() || message.author;
+            let mem = message.guild.member(user);
+            let millisJoined = new Date().getTime() - mem.joinedAt.getTime();
+            let daysJoined = millisJoined / 1000 / 60 / 60 / 24;
+    const alpha = new Discord.RichEmbed()
+    .setAuthor(img)
+    .setDescription(`**${message.author.name} **\n\n► لقد قمت بدعوة   \`\`${Number(inviteCount)}\`\` عضو \n\n► لقد انضممت لللسيرفر مند \`${daysJoined.toFixed(0)}\` يوم `)
+    .setThumbnail(imagemm)
+    .setColor(0x4959e9);
+    message.channel.send(alpha);
 
-});
+    });
 
-};
-  });
+    };
+      });
+
+
 client.on('message', message => {
 if (message.author.codes) return;
 if (!message.content.startsWith(prefix)) return;
