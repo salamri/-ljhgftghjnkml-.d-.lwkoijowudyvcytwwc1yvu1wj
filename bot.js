@@ -379,7 +379,7 @@ possibleInvites.push([inviteCount, exec]);
         let daysJoined = millisJoined / 1000 / 60 / 60 / 24;
 const alpha = new Discord.RichEmbed()
 .setAuthor(img)
-.addField(`${message.author.name}`,  `\n\n► لقد قمت بدعوة   \`\`${Number(inviteCount)}\`\` عضو \n\n ► لقد انضممت لللسيرفر مند \`${daysJoined.toFixed(0)}\`يوم .\n\n► لقد انضممت للسيرفر من خلال هذا الرابط \`${exec}\``,true)
+.addField(`${message.author.name}`,` ّ\n\n► لقد قمت بدعوة   \`\`${Number(inviteCount)}\`\` عضو \n\n ► لقد انضممت لللسيرفر مند \`${daysJoined.toFixed(0)}\`يوم .\n\n► لقد انضممت للسيرفر من خلال هذا الرابط \`${exec}\``,true)
 .setThumbnail(imagemm)
 .setColor(0x4959e9);
 message.channel.send(alpha);
