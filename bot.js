@@ -5,6 +5,13 @@ client.on('ready', () => {
     console.log('I am ready!');
 });
 
+
+client.on('ready', () => {
+    client.user.setActivity("-help | -inv",{type: 'WATCHING'})
+
+});
+
+
 client.on('message', message => {
 var prefix = "-";
 
@@ -257,21 +264,69 @@ client.on('message', async message => {
 
  
 
-client.on('message', function(msg) {
-    if(msg.content.startsWith (prefix  + 'server')) {
-      let embed = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setThumbnail(msg.guild.iconURL)
-      .addField('** Server Loction :**',`** __${msg.guild.region}__ **`,true)
-            .addField('**Server Owner :**',`**${msg.guild.owner}**`,true)
-                  .addField('**Server ID**',`**${msg.guild.id}**`,true)
-      .addField('**Roles :**',`** __${msg.guild.roles.size}__ **`,true)
-      .addField('**Members :**',`** __${msg.guild.memberCount}__ **`,true)
-      .addField('**Text Channels :**',`** __${msg.guild.channels.filter(m => m.type === 'text').size}__** `,true)
-      .addField('**Voice Channels :**',`** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **`,true)
-      msg.channel.send({embed:embed});
-    }
-  });
+client.on('message', message => {
+if (message.content.startsWith('*server')) {
+ message.channel.send(`Here is the different information of **${message.guild.name}**`, {
+        embed: {
+            color: 0xDF9C9D,
+            author: {
+                name: client.user.username,
+                icon_url: client.user.displayAvatarURL
+            },
+            thumbnail: {
+                url: message.guild.iconURL
+            },
+            fields: [{
+                    name: "• name:",
+                    value: `${message.guild.name}`,
+                    inline: true
+                }, {
+                    name: "• ID:",
+                    value: `${message.guild.id}`,
+                    inline: true
+                }, {
+                    name: "• Crated at:",
+                    value: moment(message.guild.createdAt).format("LL"),
+                    inline: true
+                }, {
+                    name: "• Owner:",
+                    value: message.guild.owner.user.tag,
+                    inline: true
+                }, {
+                    name: "• Members:",
+                    value: `${message.guild.memberCount}`,
+                    inline: true
+                }, {
+                    name: "• Last members:",
+                    value: `${Array.from(message.channel.guild.members.values()).sort((a, b) => b.joinedAt - a.joinedAt).map(m => `<@!${m.id}>`).splice(0, 1)}`,
+                    inline: true
+                }, {
+                    name: "• Channel",
+                    value: `**${message.guild.channels.filter(channel => channel.type === 'text').size}** text - **${message.guild.channels.filter(channel => channel.type === 'voice').size}** audio`,
+                    inline: true
+                }, {
+                    name: "• AFK channel",
+                    value: `${message.guild.afkChannel}`,
+                    inline: true
+                }, {
+                    name: `• Roles - **${message.channel.guild.roles.size}**:`,
+                    value: message.guild.roles.array().map(g => g).join(', '),
+                    inline: true
+                }, {
+                    name: `• Emojies - **${message.channel.guild.emojis.size}**:`,
+                    value: `${message.guild.emojis.map(e => e).join(', ')}`,
+                    inline: true
+                }
+            ]
+        }
+    })
+
+
+
+
+
+}
+})
 
 const giphy = require('giphy-api')();
     function getValue(key, array) {
@@ -303,7 +358,35 @@ const giphy = require('giphy-api')();
       }
 });
 
+client.on('message', message => {
+if (message.content.startsWith('-invites')) {
+let oi = message.mentions.users.first() ? message.mentions.users.first().id : message.author.id ; 
+  let img = message.mentions.users.first() ? message.mentions.users.first().username : message.author.username;
+  let imagemm = message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL
+  message.guild.fetchInvites().then(invs => {
+    let member = client.guilds.get(message.guild.id).members.get(oi);
+    let personalInvites = invs.filter(i => i.inviter.id === oi);
+    let urll = invs.filter(i => i.inviter.id === oi);
+    let link = urll.reduce((p , v) => v.url +` , Total de membros recrutados no convite: ${v.uses}.\n`+ p, `\nServidor: ${message.guild.name} \n `);
+    let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+   let exec = personalInvites.reduce((p, v) => v.inviter);
+ let possibleInvites = [['Total de membros recrutados:']];
+possibleInvites.push([inviteCount, exec]);
+        let user = message.mentions.users.first() || message.author;
+        let mem = message.guild.member(user);
+        let millisJoined = new Date().getTime() - mem.joinedAt.getTime();
+        let daysJoined = millisJoined / 1000 / 60 / 60 / 24;
+const alpha = new Discord.RichEmbed()
+.setAuthor(img)
+.addField(`${message.author.name}`,  `\n\n► لقد قمت بدعوة   \`\`${Number(inviteCount)}\`\` عضو \n\n ► لقد انضممت لللسيرفر مند \`${daysJoined.toFixed(0)}\`يوم .\n\n► لقد انضممت للسيرفر من خلال هذا الرابط \`${exec}\``,true)
+.setThumbnail(imagemm)
+.setColor(0x4959e9);
+message.channel.send(alpha);
 
+});
+
+};
+  });
 client.on('message', message => {
 if (message.author.codes) return;
 if (!message.content.startsWith(prefix)) return;
@@ -364,7 +447,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
     client.on('message', message => {
     if (message.content.startsWith(prefix + 'help')) {
-        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-stats | معلومات البوت\n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه\`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-mute | الأسكات\n-unmute | فك الأسكات\`\`\` ** ']
+        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-stats | معلومات البوت\n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n -invites | لرؤية دعواتك\`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-mute | الأسكات\n-unmute | فك الأسكات\`\`\` ** ']
 
         let page = 1;
 
