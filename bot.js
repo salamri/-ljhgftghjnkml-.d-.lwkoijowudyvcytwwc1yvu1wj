@@ -37,9 +37,9 @@ if(message.content.startsWith("-slots")) {
   let slots3 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
   let we;
   if(slots1 === slots2 && slots2 === slots3) {
-    we = "Win!"
+    we = "** لقد فزت ! ** ."
   } else {
-    we = "Lose!"
+    we = "** لقد خسرت ! ** ."
   }
   message.channel.send(`${slots1} | ${slots2} | ${slots3} - ${we}`)
 }
@@ -411,7 +411,7 @@ const giphy = require('giphy-api')();
             let daysJoined = millisJoined / 1000 / 60 / 60 / 24;
     const alpha = new Discord.RichEmbed()
     .setAuthor(img)
-    .setDescription(`**\n► لقد قمت بدعوة   \`\`${Number(inviteCount)}\`\` عضو \n\n► لقد انضممت لللسيرفر مند \`${daysJoined.toFixed(0)}\` يوم `)
+    .setDescription(`**\n► لقد قمت بدعوة   \`\`${Number(inviteCount)}\`\` عضو \n\n► لقد انضممت لللسيرفر مند \`${daysJoined.toFixed(0)}\` يوم **`)
     .setThumbnail(imagemm)
     .setColor(0x4959e9);
     message.channel.send(alpha);
