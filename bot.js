@@ -8,7 +8,7 @@ client.on('ready', () => {
 
 
 client.on('ready', () => {
-    client.user.setActivity("-help | -inv",{type: 'WATCHING'})
+    client.user.setActivity("-help | -inv | -sup",{type: 'WATCHING'})
 
 });
 
@@ -29,6 +29,67 @@ Server Count: __${guild.memberCount}__**`)
 });
   
 
+
+client.on('message', message => {
+         if (message.content === prefix + "td") {
+         if (!message.channel.guild) return message.reply('** This command only for servers **');
+         var currentTime = new Date(),
+            hours = currentTime.getHours() + 4 ,
+            hours2 = currentTime.getHours() + 3 ,
+            hours3 = currentTime.getHours() + 2 ,
+            hours4 = currentTime.getHours() + 3 ,
+            minutes = currentTime.getMinutes(),
+            seconds = currentTime.getSeconds(),
+            Year = currentTime.getFullYear(),
+            Month = currentTime.getMonth() + 1,
+            Day = currentTime.getDate();
+             var h = hours
+  if(hours > 12) {
+               hours -= 12;
+            } else if(hours == 0) {
+                hours = "12";
+            }
+             if(hours2 > 12) {
+               hours2 -= 12;
+            } else if(hours2 == 0) {
+                hours2 = "12";
+
+            }
+                         if(hours3 > 12) {
+               hours3 -= 12;
+            } else if(hours3 == 0) {
+                hours3 = "12";
+            }
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+            var suffix = 'صباحاَ';
+            if (hours >= 12) {
+                suffix = 'مساء';
+                hours = hours - 12;
+            }
+            if (hours == 0) {
+                hours = 12;
+            }
+
+
+                var Date15= new Discord.RichEmbed()
+                .setThumbnail("https://i.imgur.com/ib3n4Hq.png")
+                .setTitle( "Time & Date.")
+                .setColor('RANDOM')
+                .setFooter(message.author.username, message.author.avatarURL)
+                 .addField('- KSA. :flag_sa: ',
+                ""+ hours2 + ":" + minutes +":"+ seconds  + "")
+                .addField('- EGY. :flag_eg: ',
+                ""+ hours3 + ":" + minutes +":"+ seconds  + "")
+
+                .addField('- Date.',
+                ""+ Day + "-" + Month + "-" + Year +  "")
+
+                 message.channel.sendEmbed(Date15);
+        }
+    });
+
   client.on('message', message => {
 if(message.content.startsWith("-slots")) {
   let slot1 = ['🍏', '🍇', '🍒', '🍍', '🍅', '🍆', '🍑', '🍓'];
@@ -37,9 +98,9 @@ if(message.content.startsWith("-slots")) {
   let slots3 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
   let we;
   if(slots1 === slots2 && slots2 === slots3) {
-    we = "** لقد فزت ! ** ."
+    we = " : ** لقد فزت   ** ."
   } else {
-    we = "** لقد خسرت ! ** ."
+    we = ": ** لقد خسرت ! ** ."
   }
   message.channel.send(`${slots1} | ${slots2} | ${slots3} - ${we}`)
 }
@@ -450,6 +511,40 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} banned from the serve
 }
 });
 
+ client.on('message' , message => {
+
+    if (message.content === "-inv") {
+        if(!message.channel.guild) return message.reply('**الآمر فقط في السيرفرات**')
+        message.channel.send(`**تم الأرسال في الخاص . **`)
+     const embed = new Discord.RichEmbed()
+ .setColor("RANDOM")
+ .setThumbnail(client.user.avatarURL)
+ .setDescription("Add LeBot." + `
+ **
+رابط البوت | http://bit.do/eu28Z
+ **
+`);
+  message.author.sendEmbed(embed);
+   }
+}); 
+
+  client.on('message' , message => {
+
+    if (message.content === "-sup") {
+        if(!message.channel.guild) return message.reply('**الآمر فقط في السيرفرات**');
+     const embed = new Discord.RichEmbed()
+ .setColor("RANDOM")
+ .setThumbnail(client.user.avatarURL)
+ .setDescription(" **welcome To LeBot Support** " + `
+ **
+رابط السيرفر | https://discord.gg/VWbmtDb
+ **
+`);
+  message.author.sendEmbed(embed);
+   }
+});
+
+
 
 client.on('message', message => {
 if (message.author.codes) return;
@@ -482,7 +577,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
     client.on('message', message => {
     if (message.content.startsWith(prefix + 'help')) {
-        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-stats | معلومات البوت\n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-mute | الأسكات\n-unmute | فك الأسكات\`\`\` ** ']
+        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-stats | معلومات البوت\n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\n-td | التاريخ والوقت\`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-mute | الأسكات\n-unmute | فك الأسكات\`\`\` ** ']
 
         let page = 1;
 
