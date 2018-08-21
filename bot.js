@@ -809,26 +809,25 @@ userData[message.author.id].Money+= 0.25;
 
 
 
-client.on("message", async message => {
-	if (message.author.bot) return;
-	if (message.channel.type === "dm") return message.reply('** » الأمر في السيرفرات فقط . ** ')
-      if (message.content.startsWith(prefix + 'id')) {
+client.on('message',async message => {
+  if(message.aeuthor.bot) return;
+  if(message.channel.type === 'dm') return;
+  let person = message.guild.members.get(message.mentions.users.first()) || message.guild.members.get(message.author);
+  if(message.content.startsWith(prefix + "id")) {
+    let newID = new Discord.RichEmbed()
+    .setAuthor(`Userinfo.`, message.author.avatarURL)
+    .setTitle(`• ${person.user.username || person.username}`)
+    .setThumbnail(person.user.avatarURL || person.avatarURL)
+    .addField('• iD', `${person.user.id || person.id}`,true)
+    .addField('• Nickname', `${person.nickname || 'None'}`,true)
+    .addField('• Status', `${person.user.status.toUpperCase()}`,true)
+    .addField('• Joined Discord', `${person.user.createdAt.toLocaleString() || person.createdAt.toLocaleString()}`,true)
+    .addField('• Joined Server', `${person.joinedAt.toLocaleString()}`,true)
+    .addField('• Roles', `\`${person.roles.map(a => a.name).join('\n')}\``,true)
+    .addField('• VoiceChannel', `${person.voiceChannel.name || 'None'}`,true);
 
-  
-
-				let embed = new Discord.RichEmbed()
-					.setThumbnail(message.author.avatarURL)
-					.setColor("#8A2BE2")
-					.setDescription(`User info for: **${message.author.username}**`)
-					.addField("Avatar:", `${message.author.avatarURL}`, true)
-					.addField("Status:", message.author.presence.status, true)
-					.addField("Bot: ", message.author.bot, true)
-					.addField("Tag: ", message.author.tag, true)
-					.addField("Discriminator:", message.author.discriminator, true)
-					.setFooter(`Created at: ${message.author.createdAt}`)
-
-				message.channel.send(embed)
-      }
+    message.channel.send(newID);
+  }
 });
 
 
