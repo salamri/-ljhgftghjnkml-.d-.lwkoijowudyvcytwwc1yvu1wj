@@ -817,7 +817,7 @@ client.on('message',async message => {
     let newID = new Discord.RichEmbed()
     .setAuthor(`Userinfo.`, message.author.avatarURL)
     .setTitle(`• ${person.user.username}`)
-    .setThumbnail(person.user.avatarURL)
+    .setThumbnail(`${person.user.avatarURL}`)
     .addField('• iD', `${person.user.id}`,true)
     .addField('• Nickname', `${message.guild.member(person).nickname || 'None'}`,true)
     .addField('• Status', `${person.status.toUpperCase()}`,true)
