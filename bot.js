@@ -815,9 +815,9 @@ client.on('message',async message => {
   let person = message.mentions.members.first() || message.guild.members.get(message.author);
   if(message.content.startsWith(prefix + "id")) {
     let newID = new Discord.RichEmbed()
-    .setAuthor(`Userinfo.`, message.author.avatarURL)
+    .setAuthor(`Userinfo.`,` ${message.author.avatarURL}`)
     .setTitle(`• ${person.user.username}`)
-    .setThumbnail(person.user.avatarURL)
+    .setThumbnail(`${person.user.avatarURL}`)
     .addField('• iD', `${person.user.id}`,true)
     .addField('• Nickname', `${person.nickname || 'None'}`,true)
     .addField('• Status', `${person.user.status.toUpperCase()}`,true)
