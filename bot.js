@@ -14,7 +14,7 @@ client.on('ready', () => {
 });
 
 
-client.on('guildMemberAdd',async member => {
+        client.on('guildMemberAdd',async member => {
   const Canvas = require('canvas');
   const jimp = require('jimp');
   const w = ['./welcome_4.png'];
@@ -66,13 +66,14 @@ client.on('guildMemberAdd',async member => {
           ctx.clip();
           ctx.drawImage(ava, 36, 21, 260, 260);
  			
-const c = client.channels.find("welcome");
+let c = member.guild.channels.find("name","welcome");
+if(!c) return;
+if(c) {
           c.sendFile(canvas.toBuffer());
  
 });
 });
 });
-
 
 
 client.on("guildMemberAdd", member => {
