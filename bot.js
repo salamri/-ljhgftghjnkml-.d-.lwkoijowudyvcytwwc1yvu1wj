@@ -14,6 +14,21 @@ client.on('ready', () => {
 });
 
 
+client.on("message", message => {
+  if (message.content === "-welcome") {
+   const embed = new Discord.RichEmbed()
+       .setColor("#ffff00")
+       .setThumbnail(message.author.avatarURL)
+       .setDescription(`**
+• لتفعيل الترحيب قم بعمل روم بالأسم التالي , 
+\`welcome\` .**
+
+**
+`)
+       message.channel.send(embed)
+     }
+   });
+
   client.on('message', async message => {
   if(message.content.startsWith(prefix + "bcall")) {
     let i = client.users.size;
@@ -675,7 +690,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
     client.on('message', message => {
     if (message.content.startsWith(prefix + 'help')) {
-        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-stats | معلومات البوت\n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\n-td | التاريخ والوقت\`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-mute | الأسكات\n-unmute | فك الأسكات\`\`\` ** ']
+        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-stats | معلومات البوت\n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\n-td | التاريخ والوقت\`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-mute | الأسكات\n-unmute | فك الأسكات\n-welcome |  نظام الترحيب\`\`\` ** ']
 
         let page = 1;
 
