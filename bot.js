@@ -807,8 +807,6 @@ userData[message.author.id].Money+= 0.25;
 
 
 
-
-
 client.on('message',async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
@@ -817,7 +815,7 @@ client.on('message',async message => {
   if(message.content.startsWith(prefix + "id")) {
     let newID = new Discord.RichEmbed()
     .setAuthor(`Userinfo.`, message.author.avatarURL)
-    .setTitle(`• ${person.user.username}`)
+    .setTitle(`• ${person.user.tag}`)
     .setThumbnail(person.user.avatarURL)
     .addField('• iD', `${person.user.id}`,true)
     .addField('• Nickname', `${person.nickname || 'None'}`,true)
@@ -830,6 +828,7 @@ client.on('message',async message => {
     message.channel.send(newID);
   }
 });
+
 
 
 
