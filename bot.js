@@ -810,8 +810,7 @@ userData[message.author.id].Money+= 0.25;
 client.on('message',async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
-  let person = message.mentions.users.first() || message.author;
-  person = message.guild.members.get(person);
+  let person = message.guild.members.get(message.mentions.users.first() || message.author);
   if(message.content.startsWith(prefix + "id")) {
     let newID = new Discord.RichEmbed()
     .setAuthor(`Userinfo.`, message.author.avatarURL)
@@ -828,6 +827,7 @@ client.on('message',async message => {
     message.channel.send(newID);
   }
 });
+
 
 
 
