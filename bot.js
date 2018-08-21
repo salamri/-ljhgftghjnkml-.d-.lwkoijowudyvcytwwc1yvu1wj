@@ -810,7 +810,7 @@ userData[message.author.id].Money+= 0.25;
 
 
 client.on('message',async message => {
-  if(message.aeuthor.bot) return;
+  if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
   let person = message.guild.members.get(message.mentions.users.first()) || message.guild.members.get(message.author);
   if(message.content.startsWith(prefix + "id")) {
