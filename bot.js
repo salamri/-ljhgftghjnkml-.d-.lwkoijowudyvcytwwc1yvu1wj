@@ -813,22 +813,24 @@ client.on('message',async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
   let person = message.mentions.users.first() || message.author;
+  person = message.guild.members.get(person);
   if(message.content.startsWith(prefix + "id")) {
     let newID = new Discord.RichEmbed()
     .setAuthor(`Userinfo.`, message.author.avatarURL)
     .setTitle(`• ${person.user.username}`)
-    .setThumbnail(`${person.user.avatarURL}`)
+    .setThumbnail(person.user.avatarURL)
     .addField('• iD', `${person.user.id}`,true)
-    .addField('• Nickname', `${message.guild.member(person).nickname || 'None'}`,true)
+    .addField('• Nickname', `${person.nickname || 'None'}`,true)
     .addField('• Status', `${person.status.toUpperCase()}`,true)
-    .addField('• Joined Discord', `${person.createdAt.toLocaleString()}`,true)
-    .addField('• Joined Server', `${message.guild.member(person).joinedAt.toLocaleString()}`,true)
-    .addField('• Roles', `\`${message.guild.member(person).roles.map(a => a.name).join('\n')}\``,true)
-    .addField('• VoiceChannel', `${message.guild.member(person).voiceChannel.name || 'None'}`,true);
+    .addField('• Joined Discord', `${person.user.createdAt.toLocaleString()}`,true)
+    .addField('• Joined Server', `${person.joinedAt.toLocaleString()}`,true)
+    .addField('• Roles', `\`${person.roles.map(a => a.name).join('\n')}\``,true)
+    .addField('• VoiceChannel', `${person.voiceChannel.name || 'None'}`,true);
 
     message.channel.send(newID);
   }
 });
+
 
 
 
