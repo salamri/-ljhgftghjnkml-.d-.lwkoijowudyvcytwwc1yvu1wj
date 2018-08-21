@@ -23,7 +23,7 @@ client.on("message", message => {
 • لتفعيل الترحيب قم بعمل روم بالأسم التالي , 
 \`welcome\` .**
 
-**
+
 `)
        message.channel.send(embed)
      }
