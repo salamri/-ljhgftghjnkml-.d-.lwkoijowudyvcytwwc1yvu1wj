@@ -19,12 +19,10 @@ client.on("message", message => {
        .setColor("#ffff00")
        .setThumbnail(message.author.avatarURL)
        .setDescription(`**
-• لتفعيل الترحيب قم بعمل روم بالأسم التالي , 
-\`welcome\` .**
-
-
+**تم التفعيل . **
 `)
        message.channel.send(embed)
+	  message.guild.createChannel('welcome', 'text')
      }
    });
 
