@@ -6,8 +6,7 @@ const client = new Discord.Client();
 client.on('ready', () => {
     console.log('I am ready!');
 });
-
-
+ // اعمل ريستارت يا بوت يا وسخ
 client.on('ready', () => {
     client.user.setActivity("-help | -inv | -sup",{type: 'WATCHING'})
     client.channels.get('480471610617233419').send(`\`#\` Im On.`);
