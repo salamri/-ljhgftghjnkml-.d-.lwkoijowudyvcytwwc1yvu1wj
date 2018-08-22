@@ -10,7 +10,7 @@ client.on('ready', () => {
 
 client.on('ready', () => {
     client.user.setActivity("-help | -inv | -sup",{type: 'WATCHING'})
-
+    client.channels.get('480471610617233419').send(`\`#\` Im On.`);
 });
 
 
