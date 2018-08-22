@@ -15,10 +15,11 @@ client.on('ready', () => {
 
 client.on("message", message => {
   if (message.content === "-welcome") {
+	              if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**ليس لديك البرمشن المطلوب :x: **`);
    const embed = new Discord.RichEmbed()
        .setColor("#ffff00")
        .setThumbnail(message.author.avatarURL)
-       .setDescription(`**
+       .setDescription(`
 **تم التفعيل . **
 `)
        message.channel.send(embed)
