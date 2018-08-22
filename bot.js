@@ -529,13 +529,6 @@ client.on('message',async message => {
   }
 });
 
-
-
-
-
-}
-})
-
 const giphy = require('giphy-api')();
     function getValue(key, array) {
   for (var el in array) {
