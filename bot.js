@@ -825,19 +825,18 @@ userData[message.author.id].Money+= 0.25;
 client.on('message',async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
-  let person = message.guild.members.get(message.mentions.users.first() || message.author);
   if(message.content.startsWith(prefix + "id")) {
     let newID = new Discord.RichEmbed()
     .setAuthor(`Userinfo.`, message.author.avatarURL)
-    .setTitle(`• ${person.user.tag}`)
-    .setThumbnail(person.user.avatarURL)
-    .addField('• iD', `${person.user.id}`,true)
-    .addField('• Nickname', `${person.nickname || 'None'}`,true)
-    .addField('• Status', `${person.status.toUpperCase()}`,true)
-    .addField('• Joined Discord', `${person.user.createdAt.toLocaleString()}`,true)
-    .addField('• Joined Server', `${person.joinedAt.toLocaleString()}`,true)
-    .addField('• Roles', `\`${person.roles.map(a => a.name).join('\n')}\``,true)
-    .addField('• VoiceChannel', `${person.voiceChannel.name || 'None'}`,true);
+    .setTitle(`• ${client.user.tag}`)
+    .setThumbnail(client.user.avatarURL)
+    .addField('• iD', `${client.user.id}`,true)
+    .addField('• Nickname', `${client.nickname || 'None'}`,true)
+    .addField('• Status', `${client.status.toUpperCase()}`,true)
+    .addField('• Joined Discord', `${client.user.createdAt.toLocaleString()}`,true)
+    .addField('• Joined Server', `${client.joinedAt.toLocaleString()}`,true)
+    .addField('• Roles', `\`${client.roles.map(a => a.name).join('\n')}\``,true)
+    .addField('• VoiceChannel', `${client.voiceChannel.name || 'None'}`,true);
 
     message.channel.send(newID);
   }
