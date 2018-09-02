@@ -35,20 +35,7 @@ message.guild.channels.find('name', 'suggestions').send(embed)
 });
 
 
-client.on("message", message => {
-  let Deep = message.mentions.users.first();
-	    if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**ليس لديك البرمشن المطلوب :x: **`);
-  if(message.content.startsWith(prefix + "vkick")) {
-    if(!Deep) {
-      message.channel.send("# - ملحوظه : يجب اختيار شخص لطردة .");
-      return;
-    }
-    message.guild.createChannel("DeepBot vKicK.", "voice").then(c => {
-     message.Deep.setVoiceChannel(c)
-      c.delete()
-    });
-  }
-});
+
 
 client.on("message", message => {
   if (message.content === "-welcome") {
