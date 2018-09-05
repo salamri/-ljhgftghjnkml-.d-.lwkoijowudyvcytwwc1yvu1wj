@@ -20,7 +20,7 @@ client.on('ready', () => {
     if(!msg.channel.guild) return msg.reply('** هاذا الامر فقط للسيرفرات**');
     if(!msg.guild.channels.find('name', 'suggestions')) return msg.reply('**الرجاء إضافة روم بإسم suggestions**');
     let args = msg.content.split(" ").slice(1);
-    if(!args[1]) return msg.reply('**يرجي كتابة الأقتراح بعد الأمر** ')
+    if(!args[0]) return msg.reply('**يرجي كتابة الأقتراح بعد الأمر** ')
 var message = msg;
 var embed = new Discord.RichEmbed()
 .setTitle(' Suggestions.')
