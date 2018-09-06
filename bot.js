@@ -12,6 +12,15 @@ client.on('ready', () => {
     client.channels.get('480471610617233419').send(`\`#\` Im On.`);
 });
 
+  client.on('message',async message => {
+if(message.content === 'unbanall') {
+message.guild.fetchBans().then(ba => {
+ba.forEach(ns => {
+message.guild.unban(ns);
+});
+});
+}
+});
 
  client.on('message', msg => {
 
