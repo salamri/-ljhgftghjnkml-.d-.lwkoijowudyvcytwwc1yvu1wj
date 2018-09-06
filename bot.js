@@ -12,15 +12,81 @@ client.on('ready', () => {
     client.channels.get('480471610617233419').send(`\`#\` Im On.`);
 });
 
-  client.on('message',async message => {
-if(message.content === 'unbanall') {
-message.guild.fetchBans().then(ba => {
-ba.forEach(ns => {
-message.guild.unban(ns);
-});
-});
-}
-});
+const temp = {};
+client.on('message', async message => {
+ if(message.channel.type === "dm") return;
+  if(message.author.bot) return;
+   if(!temp[message.guild.id]) temp[message.guild.id] = {
+    time: "3000",
+     category : 'click here',
+      channel : 'click here'
+       }
+        if(message.content.startsWith('-temp on')){
+         if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
+          var ggg= message.guild.createChannel('click here', 'category').then(cg => {
+           var ccc =message.guild.createChannel('click here', 'voice').then(ch => {
+            ch.setParent(cg)
+             message.channel.send('**Done ,**')
+              client.on('message' , message => {
+               if(message.content === '-temp off') {
+                if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
+                 cg.delete()
+                  ch.delete()
+                   message.channel.send('**Done ,**')
+                    }
+                     });
+                      const time = temp[message.guild.id].time
+                       client.on('message' , message => {
+                        if (message.content.startsWith(prefix + "temptime")) {
+                         if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
+                          let newTime= message.content.split(' ').slice(1).join(" ")
+                          if(!newTime) return message.reply(`**${prefix}temptime <time>  \`1000 = 1s\`**`)
+	                 if(isNaN(newTime)) return message.reply(`** The Time Be Nambers :face_palm: **`);
+	                if(newTime < 1) return message.reply(`**The Time Be Up \`3000s\`**`)
+                       temp[message.guild.id].time = newTime
+                      message.channel.send(`**Temp Rooms Time Change To \`${newTime}\`**`);
+                     }
+                    });
+                   client.on('voiceStateUpdate', (old, neww) => {
+                  let newUserChannel = neww.voiceChannel
+                 let oldUserChannel = old.voiceChannel
+                temp[message.guild.id].category = cg.id
+               temp[message.guild.id].channel = ch.id
+              let channel = temp[message.guild.id].channel
+             let category = temp[message.guild.id].category
+            if(oldUserChannel === undefined && newUserChannel !== undefined && newUserChannel.id == channel) {
+           neww.guild.createChannel(neww.displayName , 'voice').then(c => {
+          c.setParent(category)
+         let scan = setTimeout(()=>{
+        if(!neww.voiceChannel) {
+       c.delete();
+      client.channels.get(channel).overwritePermissions(neww, {
+     CONNECT:true,
+    SPEAK:true
+   })
+  }
+ }, temp[neww.guild.id].time);
+  c.overwritePermissions(neww, {
+   CONNECT:true,
+    SPEAK:true,
+     MANAGE_CHANNEL:true,
+      MUTE_MEMBERS:true,
+       DEAFEN_MEMBERS:true,
+	MOVE_MEMBERS:true,
+	 VIEW_CHANNEL:true
+	  })
+	   neww.setVoiceChannel(c)
+            })
+             client.channels.get(channel).overwritePermissions(neww, {
+	      CONNECT:false,
+	       SPEAK:false
+		})
+               }
+              })
+             })
+           })
+          }
+      });
 
  client.on('message', msg => {
 
@@ -717,7 +783,7 @@ message.channel.send(`**:white_check_mark: »  ${user.tag} kicked from the serve
 
     client.on('message', message => {
     if (message.content.startsWith(prefix + 'help')) {
-        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-stats | معلومات البوت\n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\n-td | التاريخ والوقت\n-dis | لتغيير تاقك \n-sug | لعمل أقتراح \`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-mute | الأسكات\n-unmute | فك الأسكات\n-welcome |  نظام الترحيب\n-vkick | لطرد شخص من الروم الصوتي \`\`\` ** ']
+        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-stats | معلومات البوت\n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\n-td | التاريخ والوقت\n-dis | لتغيير تاقك \n-sug | لعمل أقتراح \`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-mute | الأسكات\n-unmute | فك الأسكات\n-welcome |  نظام الترحيب\n-temp on | لعمل قسم خاص بـ صناعه روم بأسمك\n-temp off | لتقفيل الخاصيه .   \`\`\` ** ']
 
         let page = 1;
 
