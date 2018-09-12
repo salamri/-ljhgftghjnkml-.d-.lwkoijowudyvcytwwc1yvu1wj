@@ -12,17 +12,17 @@ client.on('ready', () => {
 
 });
 
-
-client.on('message', ra3d => {
+var editedyaklaab = "-';
+client.on('message', edddiiiittteeeddd => {
  
-  if (ra3d.content ===  prefix + 'colors'){
-              if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage(':radio_button: Hey! || You Don\'t Have Perms . ')
-	  ra3d.channel.send('**Done || Create The Colors . :ballot_box_with_check: **')
+  if (edddiiiittteeeddd.content ===  editedyaklaab + 'colors'){
+              if (!edddiiiittteeeddd.member.hasPermission('MANAGE_ROLES')) return edddiiiittteeeddd.channel.sendMessage(':radio_button: Hey! || You Don\'t Have Perms . ')
+	  edddiiiittteeeddd.channel.send('**Done || Create The Colors . :ballot_box_with_check: **')
                   setInterval(function(){})
                     let count = 0;
                     let ecount = 0;
           for(let x = 1; x < 101; x++){
-            ra3d.guild.createRole({name:x,
+            edddiiiittteeeddd.guild.createRole({name:x,
               color: 'RANDOM'})
               }
             }
@@ -869,35 +869,6 @@ const giphy = require('giphy-api')();
       }
 });
 
-  client.on('message', message => {
-    if (message.content.startsWith('-invites')) {
-    let oi = message.mentions.users.first() ? message.mentions.users.first().id : message.author.id ;
-      let img = message.mentions.users.first() ? message.mentions.users.first().username : message.author.username;
-      let imagemm = message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL
-      message.guild.fetchInvites().then(invs => {
-        let member = client.guilds.get(message.guild.id).members.get(oi);
-        let personalInvites = invs.filter(i => i.inviter.id === oi);
-        let urll = invs.filter(i => i.inviter.id === oi);
-        let link = urll.reduce((p , v) => v.url +` , Total de membros recrutados no convite: ${v.uses}.\n`+ p, `\nServidor: ${message.guild.name} \n `);
-        let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
-       let exec = personalInvites.reduce((p, v) => v.inviter);
-     let possibleInvites = [['Total de membros recrutados:']];
-    possibleInvites.push([inviteCount, exec]);
-            let user = message.mentions.users.first() || message.author;
-            let mem = message.guild.member(user);
-            let millisJoined = new Date().getTime() - mem.joinedAt.getTime();
-            let daysJoined = millisJoined / 1000 / 60 / 60 / 24;
-    const alpha = new Discord.RichEmbed()
-    .setAuthor(img)
-    .setDescription(`**\n► لقد قمت بدعوة   \`\`${Number(inviteCount)}\`\` عضو \n\n► لقد انضممت لللسيرفر مند \`${daysJoined.toFixed(0)}\` يوم **`)
-    .setThumbnail(imagemm)
-    .setColor(0x4959e9);
-    message.channel.send(alpha);
-
-    });
-
-    };
-      });
 
 
 client.on('message', message => {
@@ -976,7 +947,7 @@ message.channel.send(`**Done || ${user.tag} Kicked . :ballot_box_with_check: **`
 
     client.on('message', message => {
     if (message.content.startsWith(prefix + 'help')) {
-        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-stats | معلومات البوت\n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\n-td | التاريخ والوقت\n-clan | نظام الكلانات كامل  \`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-temp on | لعمل قسم خاص بـ صناعه روم بأسمك\n-temp off | لتقفيل الخاصيه .   \`\`\` ** ']
+        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\n-td | التاريخ والوقت\n-clan | نظام الكلانات كامل \n- \`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-temp on | لعمل قسم خاص بـ صناعه روم بأسمك\n-temp off | لتقفيل الخاصيه    \`\`\` ** ']
 
         let page = 1;
 
