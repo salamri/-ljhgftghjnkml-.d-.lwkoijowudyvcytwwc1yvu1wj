@@ -12,7 +12,7 @@ client.on('ready', () => {
 
 });
 
-var editedyaklaab = "-';
+var editedyaklaab = "-";
 client.on('message', edddiiiittteeeddd => {
  
   if (edddiiiittteeeddd.content ===  editedyaklaab + 'colors'){
