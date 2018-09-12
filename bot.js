@@ -9,6 +9,7 @@ client.on('ready', () => {
 
 client.on('ready', () => {
     client.user.setActivity("-help || -inv ",{type: 'PLAYING'})
+}
 });
 
 
@@ -17,7 +18,7 @@ client.on('message', ra3d => {
   if (ra3d.content ===  prefix + 'cc'){
               if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage(':radio_button: Hey! || You Don\'t Have Perms . ');
               ra3d.channel.send("**Creating...**");
-	  ra3d.edit('Done || Create The Colors . :ballot_box_with_check: **
+	  ra3d.edit('Done || Create The Colors . :ballot_box_with_check: **')
                   setInterval(function(){})
                     let count = 0;
                     let ecount = 0;
