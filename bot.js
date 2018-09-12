@@ -7,6 +7,10 @@ client.on('ready', () => {
     console.log('I am ready!');
 });
 
+client.on('ready', () => {
+    client.user.setActivity("-help || -inv ",{type: 'PLAYING'})
+});
+
 
 client.on('message', ra3d => {
  
@@ -25,10 +29,6 @@ client.on('message', ra3d => {
        });
 
  // اعمل ريستارت يا بوت يا وسخ
-client.on('ready', () => {
-    client.user.setActivity("-help | -inv | -sup",{type: 'WATCHING'})
-    client.channels.get('480471610617233419').send(`\`#\` Im On.`);
-});
 
 const temp = {};
 client.on('message', async message => {
