@@ -945,61 +945,40 @@ message.channel.send(`**Done || ${user.tag} Kicked . :ballot_box_with_check: **`
 });
 
 
-    client.on('message', message => {
-    if (message.content.startsWith(prefix + 'help')) {
-        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\n-td | التاريخ والوقت\n-clan | نظام الكلانات كامل \n-rps | لعبة حجره ورقه  \`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-temp on | لعمل قسم خاص بـ صناعه روم بأسمك\n-temp off | لتقفيل الخاصيه\n-colors | لصناعة الألوان  \`\`\` ** ']
+   client.on('message', message => {
+if (message.content.startsWith(prefix + 'help')) {
+    let embed = new Discord.RichEmbed()
+    .setDescription(`
+      General Commands || الأوامــر العــامة :earth_asia: 
+\`-server\` , معلومات عن سيرفرك 
+\`-clan\` , نظام الكلانات 
+\`-guilds\` , عدد السيرفرات الخاصه بالبوت 
+\`-users\` , عدد مستخدمين البوت
+\`-channels\` , عدد قنوات البوت
+\`-td\` , الوقت والتاريخ
+\`-slots\` , لعبة الفواكه 
+\`-rps\` , لعبة حجره ورقه مقص
+\`-ping\` , لمعرفة سرعه اتصال البوت 
+\`-avatar\` , لرؤيه صورتك او صورة شخص
+\`gif\` , لأرسال صور متحركه 
+\`-emojis\` , لرؤية ايموجز السيرفر  
+\`-rank\` , تفاعلك في السيرفر
 
-        let page = 1;
+Admins Commands || الأوامـر الأدارية :wrench: 
+\`-temp on\` , لتشغيل امر الرومات المؤقته 
+\`-temp off\` , لأيقاف تشغيل الرومات المؤقته 
+\`-ban\` , لتبنيد عضو من السيرفر 
+\`-kick\` , لطرد عضو من السيرفر
+\`-clear\` , لمسح الشات 
+\`-bc\` , البرودكاست
 
-        let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail('https://cdn.discordapp.com/attachments/477011368403271680/477011788987367435/monogram-l-logo-letter-overlapping-thin-line-vector-5868172.jpg')
-        .setDescription(pages[page-1])
+Other || أخر :wastebasket: 
+\`-inv\` , لدعوة البوت
+Support Link : https://discord.gg/TkFfCAq 
+وشكرا لأستخدامك البوت . :rose: 
 
-        message.channel.sendEmbed(embed).then(msg => {
-
-            msg.react('🌍').then( r => {
-                msg.react('🔌')
-
-
-            const backwardsFilter = (reaction, user) => reaction.emoji.name === '🌍' && user.id === message.author.id;
-            const forwardsFilter = (reaction, user) => reaction.emoji.name === '🔌' && user.id === message.author.id;
-
-
-            const backwards = msg.createReactionCollector(backwardsFilter, { time: 20000});
-            const forwards = msg.createReactionCollector(forwardsFilter, { time: 20000});
-
-
-
-            backwards.on('collect', r => {
-                if (page === 1) return;
-                page--;
-                embed.setDescription(pages[page-1]);
-                msg.edit(embed)
-            })
-            forwards.on('collect', r => {
-                if (page === pages.length) return;
-                page++;
-                embed.setDescription(pages[page-1]);
-                msg.edit(embed)
-            })
-            })
-        })
-        }
-    });
-
-client.on('message', message => { 
-    if (message.content.startsWith(prefix + 'emojis')) {
-
-        const List = message.guild.emojis.map(e => e.toString()).join(" ");
-
-        const EmojiList = new Discord.RichEmbed()
-            .setTitle(' »  Emojis.') 
-            .setAuthor(message.guild.name, message.guild.iconURL) 
-            .setColor('RANDOM') 
-            .setDescription(List) 
-            .setFooter(message.guild.name) 
-        message.channel.send(EmojiList) 
+      `)
+    message.channel.send(embed)
     }
 });
 
