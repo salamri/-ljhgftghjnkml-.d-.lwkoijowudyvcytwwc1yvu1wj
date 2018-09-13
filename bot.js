@@ -12,6 +12,463 @@ client.on('ready', () => {
 
 });
 
+
+         client.on('message' , message => {
+  var prefix = "$";
+  if(message.author.bot) return;
+
+  if(message.content.startsWith(prefix + "xo")) {
+ let array_of_mentions = message.mentions.users.array();
+  let symbols = [':o:', ':heavy_multiplication_x:'] 
+  var grid_message;
+
+  if (array_of_mentions.length == 1 || array_of_mentions.length == 2) {
+    let random1 = Math.floor(Math.random() * (1 - 0 + 1)) + 0;
+    let random2 = Math.abs(random1 - 1); 
+    if (array_of_mentions.length == 1) {
+      random1 = 0;
+      random2 = 0;
+    }
+    var player1_id = message.author.id
+    let player2_id = array_of_mentions[random2].id;
+    var turn_id = player1_id;
+    var symbol = symbols[0];
+    let initial_message = `Game match between <@${player1_id}> and <@${player2_id}>!`;
+    if (player1_id == player2_id) {
+      initial_message += '\n_( ألعب مع نفسك)_'
+    }
+    message.channel.send(`Xo ${initial_message}`)
+    .then(console.log("Successful tictactoe introduction"))
+    .catch(console.error);
+    message.channel.send(':one::two::three:' + '\n' +
+                         ':four::five::six:' + '\n' +
+                         ':seven::eight::nine:')
+    .then((new_message) => {
+      grid_message = new_message;
+    })
+    .then(console.log("Successful tictactoe game initialization"))
+    .catch(console.error);
+    message.channel.send('يجب الانتضار حيث ما يتم الموافقه')
+    .then(async (new_message) => {
+      await new_message.react('1⃣');
+      await new_message.react('2⃣');
+      await new_message.react('3⃣');
+      await new_message.react('4⃣');
+      await new_message.react('5⃣');
+      await new_message.react('6⃣');
+      await new_message.react('7⃣');
+      await new_message.react('8⃣');
+      await new_message.react('9⃣');
+      await new_message.react('🆗');
+      await new_message.edit(`It\'s <@${turn_id}>\'s turn! Your symbol is ${symbol}`)
+      .then((new_new_message) => {
+        require('./xo.js')(client, message, new_new_message, player1_id, player2_id, turn_id, symbol, symbols, grid_message);
+      })
+      .then(console.log("Successful tictactoe listener initialization"))
+      .catch(console.error);
+    })
+    .then(console.log("Successful tictactoe react initialization"))
+    .catch(console.error);
+  }
+  else {
+    message.reply(`منشن مع من تريد ألعب`)
+    .then(console.log("Successful error reply"))
+    .catch(console.error);
+  }
+}
+ });
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', message => {
+ 
+    if (message.content.startsWith ("$id")) {
+ 
+ if(!message.channel.guild) return;
+  var invites = [];
+
+ 
+ let args = message.content.split(' ').slice(1).join(' ');
+ 
+         let defineduser = '';
+         if (!args[1]) {
+             defineduser = message.author;
+         } else {
+             let firstMentioned = message.mentions.users.first();
+             defineduser = firstMentioned;
+         }
+ 
+  const w = ['./hh.png','./hhh.png','./hhhh.png','./hhhhh.png','./hhhhhh.png'];
+ var Canvas = require('canvas')
+ var jimp = require('jimp')
+ 
+    let user = message.author;
+    const millis = new Date().getTime() - message.author.createdAt.getTime();
+    const noww = new Date();
+    dateFormat(noww, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
+    const created = millis / 1000 / 60 / 60 / 24;
+    const milliss = new Date().getTime() - message.guild.member(message.author).joinedAt.getTime();
+    const nows = new Date();
+    dateFormat(nows, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
+    const joined = milliss / 1000 / 60 / 60 / 24;
+ var heg;
+  if(men) {
+      heg = men
+  } else {
+      heg = message.author
+  }
+ var mentionned = message.mentions.members.first();
+   var h;
+  if(mentionned) {
+      h = mentionned
+  } else {
+      h = message.member
+  }
+ moment.locale('ar-TN');
+         let Image = Canvas.Image,
+             canvas = new Canvas(400, 200),
+             ctx = canvas.getContext('2d');
+         ctx.patternQuality = 'bilinear';
+         ctx.filter = 'bilinear';
+         ctx.antialias = 'subpixel';
+ 
+         fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+             if (err) return console.log(err);
+             let BG = Canvas.Image;
+             let ground = new Image;
+             ground.src = Background;
+             ctx.drawImage(ground, 0, 0, 400, 200);
+ 
+ })
+    var mentionned = message.mentions.users.first();
+ 
+     var client;
+       if(mentionned){
+           var client = mentionned;
+       } else {
+           var client = message.author;
+ 
+       }
+ 
+  var men = message.mentions.users.first();
+             var heg;
+             if(men) {
+                 heg = men
+             } else {
+                 heg = message.author
+             }
+                 let url = defineduser.displayAvatarURL.endsWith(".webp") ? defineduser.displayAvatarURL.slice(20, 20) + ".png" : defineduser.displayAvatarURL;
+                 jimp.read(url, (err, ava) => {
+                     if (err) return console.log(err);
+                     ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                         if (err) return console.log(err);
+ 
+                                         
+ 
+ 
+ 
+                                               var time2;
+       if(mentionned){
+           var time2 = `${dateFormat(message.mentions.users.first.joinedAt)}`;
+       } else {
+           var time2 = `${dateFormat(message.member.joinedAt)}`;
+ 
+       }
+ 
+ 
+                   
+ 
+ 
+ 
+ 
+                         ctx.font = 'Bold 20px Arial ';
+                         ctx.fontSize = '15px';
+                         ctx.fillStyle = "#ffffff";
+                         ctx.textAlign = "center";
+                         ctx.fillText(`${defineduser.username}`, 210 , 90);
+ 
+ 
+ 
+                         var time2;
+       if(mentionned){
+           var time2 = `${dateFormat(message.mentions.users.first.joinedAt)}`;
+       } else {
+           var time2 = `${dateFormat(message.member.joinedAt)}`;
+ 
+       }
+ 
+                                                 //wl
+                         ctx.font = 'Bold 13px Arial ';
+                         ctx.fontSize = '13px';
+                         ctx.fillStyle = "#ffffff";
+                         ctx.textAlign = "center";
+                         ctx.fillText(` »   دخولك الدسكورد ${created.toFixed(0)} يومّا`, 270 , 125 );
+ 
+ 
+
+
+                                                 //wl
+                         ctx.font = 'Bold 13px Arial ';
+                         ctx.fontSize = '13px';
+                         ctx.fillStyle = "#ffffff";
+                         ctx.textAlign = "center";
+                         ctx.fillText(` »  دخولك السيرفر ${joined.toFixed(0)} يومّا`, 270 , 170);
+ 
+                       
+                         const Avatar = Canvas.Image;
+                              let ava = new Avatar;
+                              ava.src = buf;
+                              ctx.beginPath();
+                              ctx.arc(72, 115.80, 50, 0, Math.PI*2);
+                              ctx.stroke();
+                                 ctx.clip();
+                                 ctx.drawImage(ava, 15, 55, 120, 120);
+                                 
+ message.channel.sendFile(canvas.toBuffer())
+ 
+     
+         })
+     })
+ 
+ 
+ 
+ 
+ }
+ 
+ })
+
+
+
+
+
+
+
+
+
+
+
+    client.on('message', message => {
+              if(!message.channel.guild) return;
+    var prefix = "$";
+    if(message.content.startsWith('$bc')) {
+    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للإدارة**').then(m => m.delete(5000));
+  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية لاستعمال هاذا الأمر** `ADMINISTRATOR`' );
+    let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+    let copy = "Star Codes";
+    let request = `Requested By ${message.author.username}`;
+    if (!args) return message.reply('**يجب عليك كتابة شيئ لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من الإرسال؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
+    msg.react('✅')
+    .then(() => msg.react('❌'))
+    .then(() =>msg.react('✅'))
+
+    let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+    let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+	      let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+    let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+    reaction1.on("collect", r => {
+    message.channel.send(`**☑ |   لقد تم ارسال الرسالة لـ ${message.guild.members.size} عضوآ**`).then(m => m.delete(5000));
+    message.guild.members.forEach(m => {
+    var bc = new
+       Discord.RichEmbed()
+       .setColor('RANDOM')
+       .setDescription(`**البرودكاست :mega: **
+**:shield: السيرفر : ** ${message.guild.name}
+** :thinking:  المرسل : ** ${message.author.username}
+**  الرسالة : ** ${args}
+        `)
+         .setTimestamp()
+         .setFooter('STAR Codes')
+    m.send({ embed: bc })
+    msg.delete();
+    })
+    })
+    reaction2.on("collect", r => {
+    message.channel.send(`**تم الغاء البرودكاست :x:.**`).then(m => m.delete(5000));
+    msg.delete();
+    })
+    })
+    }
+    });
+
+    
+    
+    
+    client.on('message',async message => {
+    var p = "$"
+  function timeCon(time) {
+  let days = Math.floor(time % 31536000 / 86400)
+  let hours = Math.floor(time % 31536000 % 86400 / 3600)
+  let minutes = Math.floor(time % 31536000 % 86400 % 3600 / 60)
+  let seconds = Math.round(time % 31536000 % 86400 % 3600 % 60)
+  days = days > 9 ? days : '0' + days
+  hours = hours > 9 ? hours : '0' + hours
+  minutes = minutes > 9 ? minutes : '0' + minutes
+  seconds = seconds > 9 ? seconds : '0' + seconds
+  return `${days > 0 ? `${days}:` : ''}${(hours || days) > 0 ? `${hours}:` : ''}${minutes}:${seconds}`
+  };
+  if(message.content.startsWith( p + "bot")) {
+    const millis = new Date().getTime() - client.user.createdAt.getTime();
+    const noww = new Date();
+    dateFormat(noww, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
+    const createdAT = millis / 1000 / 60 / 60 / 24;
+    var star = new Discord.RichEmbed() 
+    .setAuthor(client.user.username, client.user.avatarURL)
+    .setTitle(`${client.user.username} معلومات عن بوت`)
+    .setColor('#36393e')
+    .addField('🌟 امر البوت', prefix, true)
+    .addField('🌟 الرامات المستخدمة', `${(process.memoryUsage().rss / 1048576).toFixed()} ميجا بايت`,true)
+    .addField('🌟 سرعة البوت', `${Math.round(client.ping)} ملي سكند`,true)
+    .addField('🌟 تم تشغيل البوت منذ', `${timeCon(process.uptime())}`, true)
+    .addField('🌟 السيرفرات', client.guilds.size,true)
+    .addField(` 🌟 المستخدمين ${client.users.size} / ${client.users.filter(m => m.presence.status !== 'online').size} `)
+    .setFooter(`${client.user.username} :: ${new Date().toLocaleString()}`);
+    message.channel.send(star);
+  }
+});
+    
+    
+    
+    client.on('message', message => {
+  if (message.author.bot) return;
+ if(!message.channel.guild) return;
+ if (!points[message.author.id]) points[message.author.id] = {
+	points: 0,
+  wins: 0,
+  loses: 0,
+  };
+if (message.content.startsWith(prefix + 'انمي')) {
+ const type = require('./anime.json');
+const item = type[Math.floor(Math.random() * type.length)];
+const filter = response => {
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**لديك 10  ثواني لتخمن الانمي**').then(msg => {
+    const embed = new Discord.RichEmbed()
+ .setColor("RANDOM")
+    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
+ .setThumbnail(message.author.avatarURL)     
+ .addField(`**Star Codes**`,` **${item.type}**`)
+ .setFooter(`ستكسب 15 نقطة`)
+ msg.channel.send(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 10000, errors: ['time'] })
+        .then((collected) => {
+		message.channel.send(`**${ collected.first().author} مبروك لقد كسبت 15 نقطة 
+لمعرفة نقاطك الرجاء كتابة *point**` , '');
+		console.log(`[Typing] ${collected.first().author} typed the word.`);
+			let userData = points[collected.first().author.id];
+userData.wins += 1 
+userData.points += 15; 
+           })
+           .catch(collected => {
+points[message.author.id].loses += 1;
+             message.channel.send(`:x: ** الاجابه الصحيحه هي : __${item.answers}__حظ اوفر المرة القادمة ! لقد خسرت , انتهى الوقت**` , '');
+			console.log('[Typing] Error: No one type the word.');
+ 		})
+	})
+    })
+points[message.author.id].game += 1; 
+ }
+fs.writeFile("./point.json",JSON.stringify(points), function(err){
+    if (err) console.log(err);
+  })
+});
+    
+    
+    
+    
+    
+    let points = JSON.parse(fs.readFileSync(`./point.json`, `utf8`));
+
+    var shortNumber = require('short-number');
+
+    
+    
+    client.on('message', message => {
+
+if (!points[message.author.id]) points[message.author.id] = {
+	points: 0,
+  wins: 0,
+  loses: 0,
+  game: 0,
+
+  };
+  if (message.author.bot) return;
+
+
+if(!message.channel.guild) return;
+	let userData = points[message.author.id];
+
+if (message.content.startsWith(prefix + 'point')) {
+let pointss = userData.points
+try {
+                            pointss = shortNumber(pointss);
+                        } catch (error) {
+                            pointss = 0;
+                        }
+                        let wins = userData.wins
+try {
+                            wins = shortNumber(wins);
+                        } catch (error) {
+                            wins = 0;
+                        }
+                        let loses = userData.loses
+try {
+                            loses = shortNumber(loses);
+                        } catch (error) {
+                            loses  = 0;
+                        }
+                         let games = userData.game
+try {
+                            games = shortNumber(games);
+                        } catch (error) {
+                            games  = 0;
+                        }
+	let embed = new Discord.RichEmbed()
+    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
+	.setColor('#000000')
+	.setDescription(`**اسم بوتك
+:white_check_mark: عدد الفوز : ${wins}
+:x: عدد الخسارة: ${loses}
+:label:التقاط: ${pointss}
+:video_game: عدد مرات اللعب: ${games}**` , '');
+	message.channel.sendEmbed(embed)
+  }
+  fs.writeFile("./point.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err)
+  })
+
+});
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+client.on('ready', () => {
+    console.log('I am ready!');
+});
+
+
+
 var editedyaklaab = "-";
 client.on('message', edddiiiittteeeddd => {
  
@@ -754,7 +1211,6 @@ Choose one of the following.
 #2 ( Paper )
 #3 ( Scissors )
 \`\`\`
-
 __امامك  5 توان للاختيار__`)
 .then(() => {
   message.channel.awaitMessages(response => response.content === '1', {
@@ -963,7 +1419,6 @@ if (message.content.startsWith(prefix + 'help')) {
 \`gif\` , لأرسال صور متحركه 
 \`-emojis\` , لرؤية ايموجز السيرفر  
 \`-rank\` , تفاعلك في السيرفر
-
 Admins Commands || الأوامـر الأدارية :wrench: 
 \`-temp on\` , لتشغيل امر الرومات المؤقته 
 \`-temp off\` , لأيقاف تشغيل الرومات المؤقته 
@@ -971,12 +1426,10 @@ Admins Commands || الأوامـر الأدارية :wrench:
 \`-kick\` , لطرد عضو من السيرفر
 \`-clear\` , لمسح الشات 
 \`-bc\` , البرودكاست
-
 Other || أخر :wastebasket: 
 \`-inv\` , لدعوة البوت
 Support Link : https://discord.gg/TkFfCAq 
 وشكرا لأستخدامك البوت . :rose: 
-
       `)
     message.channel.send(embed)
     }
@@ -1045,7 +1498,7 @@ userData[message.author.id].Money+= 0.25;
 
 client.on('message', message => {
   if(message.channel.type === 'dm') return;
-  if(message.content.startsWith(prefix + "id")) {
+  if(message.content.startsWith(prefix + "user")) {
     let newID = new Discord.RichEmbed()
     .setAuthor(`Userinfo.`, message.author.avatarURL)
     .setTitle(`• ${client.user.tag}`)
