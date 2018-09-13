@@ -608,14 +608,14 @@ client.on('message',async message => {
 
 
   client.on('guildCreate', guild => {
-client.channels.get("480471610617233419").send(`:white_check_mark: **${client.user.tag} دخل سيرفر جديد
+client.channels.get("480471610617233419").send(`:white_check_mark: | Bot Joined NewServer.
 Server name: __${guild.name}__
 Server owner: __${guild.owner}__
 Server id: __${guild.id}__ 
 Server Count: __${guild.memberCount}__**`)
 });
 client.on('guildDelete', guild => {
-  client.channels.get("480471610617233419").send(`:negative_squared_cross_mark: **${client.user.tag} طلع من سيرفر
+  client.channels.get("480471610617233419").send(`:negative_squared_cross_mark: **${client.user.tag} Kicked From Server.
 Server name: __${guild.name}__
 Server owner: __${guild.owner}__
 Server id: __${guild.id}__ 
@@ -947,7 +947,7 @@ message.channel.send(`**Done || ${user.tag} Kicked . :ballot_box_with_check: **`
 
     client.on('message', message => {
     if (message.content.startsWith(prefix + 'help')) {
-        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\n-td | التاريخ والوقت\n-clan | نظام الكلانات كامل \n- \`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-temp on | لعمل قسم خاص بـ صناعه روم بأسمك\n-temp off | لتقفيل الخاصيه    \`\`\` ** ']
+        let pages = ['**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\` General Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-server | معلومات السيرفر \n-id | أيدي حسابك\n-emojis | أيموجي السيرفر\n-rank | مستواك الكتابي \n-avatar | صورة بروفايلك\n-ping | سرعة الأتصال\n-gif | صورة متحركه \n-invites | لرؤية دعواتك\n-slots | لعبة الفواكة\n-td | التاريخ والوقت\n-clan | نظام الكلانات كامل \n-rps | لعبة حجره ورقه  \`\`\`** ','**╭╮╱╱╱╱╱╭━━╮╱╱╱╭╮\n┃┃╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮\n┃┃╱╱╭━━┫╰╯╰┳━┻╮╭╯\n┃┃╱╭┫┃━┫╭━╮┃╭╮┃┃\n┃╰━╯┃┃━┫╰━╯┃╰╯┃╰┳╮\n╰━━━┻━━┻━━━┻━━┻━┻╯\n\`\`\`Admin Commands \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n-kick | طرد عضو\n-ban | حظر عضو\n-voice | المتصلين بالصوت\n-bc | البرودكاست\n-clear | مسح الشات\n-temp on | لعمل قسم خاص بـ صناعه روم بأسمك\n-temp off | لتقفيل الخاصيه   \`\`\` ** ']
 
         let page = 1;
 
@@ -994,7 +994,7 @@ client.on('message', message => {
         const List = message.guild.emojis.map(e => e.toString()).join(" ");
 
         const EmojiList = new Discord.RichEmbed()
-            .setTitle(':negative_squared_cross_mark: »  Emojis.') 
+            .setTitle(' »  Emojis.') 
             .setAuthor(message.guild.name, message.guild.iconURL) 
             .setColor('RANDOM') 
             .setDescription(List) 
@@ -1064,7 +1064,7 @@ userData[message.author.id].Money+= 0.25;
 
 
 
-client.on('message',async message => {
+client.on('message', message => {
   if(message.channel.type === 'dm') return;
   if(message.content.startsWith(prefix + "id")) {
     let newID = new Discord.RichEmbed()
