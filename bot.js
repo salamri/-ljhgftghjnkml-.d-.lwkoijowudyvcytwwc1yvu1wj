@@ -1050,7 +1050,7 @@ client.on('message',async message => {
   client.on('message', async message => {
   if(message.content.startsWith(prefix + "bcall")) {
     let i = client.users.size;
-    if(message.author.id !== '456641975932813345') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
+    if(message.author.id !== '481512694604759060') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
     var args = message.content.split(' ').slice(1).join(' ');
     if(!args) return message.channel.send('❎ » يجب عليك كتابة الرسالة')
     setTimeout(() => {
@@ -1412,8 +1412,6 @@ if (message.content.startsWith(prefix + 'help')) {
 \`-users\` , عدد مستخدمين البوت
 \`-channels\` , عدد قنوات البوت
 \`-td\` , الوقت والتاريخ
-\`-slots\` , لعبة الفواكه 
-\`-rps\` , لعبة حجره ورقه مقص
 \`-ping\` , لمعرفة سرعه اتصال البوت 
 \`-avatar\` , لرؤيه صورتك او صورة شخص
 \`gif\` , لأرسال صور متحركه 
@@ -1426,6 +1424,10 @@ Admins Commands || الأوامـر الأدارية :wrench:
 \`-kick\` , لطرد عضو من السيرفر
 \`-clear\` , لمسح الشات 
 \`-bc\` , البرودكاست
+Game Commands || الأوامـر الأدارية :wrench:
+\`-slots\` , لعبة الفواكه 
+\`-rps\` , لعبة حجره ورقه مقص
+ \`-xo\` , لعبه  XO
 Other || أخر :wastebasket: 
 \`-inv\` , لدعوة البوت
 Support Link : https://discord.gg/TkFfCAq 
